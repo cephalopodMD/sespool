@@ -1,7 +1,7 @@
 SESPOOL
 -------
 
-Simple English Syntaxed Object Oriented Language
+Simple English Syntaxed Programming and Object Oriented Language - A toy programing language where all programs are written in syntactically correct English
 
 seslex
 ------
