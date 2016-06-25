@@ -1,0 +1,26 @@
+ERROR: 18: Type-Check: A does not conform to SELF_TYPE(B) in method getThis
+ERROR: 30: Type-Check: arithmetic on String Int instead of Ints
+ERROR: 27: Type-Check: A does not conform to B in assignment
+ERROR: 7: Type-Check: class B redefines method foo and changes return type (from Int to String)
+ERROR: 5: Type-Check: class B redefines attribute a
+ERROR: 3: Type-Check: class A has method setNext with formal parameter of unknown type SELF_TYPE
+ERROR: 1: Type-Check: class A inherits from Int
+ERROR: 0: Type-Check: inheritance cycle: A B
+ERROR: 9: Type-Check: initializer type String does not conform to type A
+ERROR: 0: Type-Check: class Main not found
+ERROR: 0: Type-Check: class Main method main not found
+ERROR: 3: Type-Check: comparison between Int and Bool
+ERROR: 4: Type-Check: B does not conform to SELF_TYPE in static dispatch
+ERROR: 17: Type-Check: case branch type A is bound twice
+ERROR: 2: Type-Check: class Main has method bar with formal parameter named self
+ERROR: 2: Type-Check: class Main has an attribute named self
+ERROR: 4: Type-Check: binding self in a let is not allowed
+ERROR: 5: Type-Check: binding self in a case expression is not allowed
+ERROR: 5: Type-Check: using SELF_TYPE as a case branch type is not allowed
+ERROR: 1: Type-Check: class named SELF_TYPE
+ERROR: 9: Type-Check: argument #1 type String does not conform to formal type Int
+ERROR: 2: Type-Check: String does not conform to Int in initialized attribute
+ERROR: 2: Type-Check: String does not conform to Int in method foo
+ERROR: 3: Type-Check: unknown method bar in dispatch on A
+ERROR: 3: Type-Check: unknown method bar in dispatch on A
+ERROR: 3: Type-Check: unknown method bar in dispatch on Object

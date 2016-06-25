@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+import os, sys
+
+cool_file = sys.argv[1]
+name = cool_file[:-3]
+lex = 'node pa2/main.js '+name+'.cl'
+parse = 'python pa3/main.py '+name+'.cl-lex'
+check = 'pa4/main '+name+'.cl-ast'
+execute = 'pa5/a.out '+name+'.cl-type'
+
+os.system(lex)
+os.system(parse)
+os.system(check)
+os.system(execute)
+os.system('rm ' + ' '.join([name+'.cl-lex', name+'.cl-ast', name+'.cl-type']))
