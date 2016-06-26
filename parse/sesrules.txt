@@ -1,0 +1,90 @@
+SESPOOL parsing rules v0.2
+needs lists
+needs for loops
+
+program         = TAB main [NEWLINE TAB paragraph]*
+paragraph       = verbDefinition
+                | nounDefinition
+                | typeDefinition
+main            = imperative PERIOD [SPACE imperative PERIOD]*
+verbDefinition  = verbDeclarative PERIOD [SPACE imperative PERIOD]+
+nounDefinition  = nounDeclarative PERIOD [SPACE imperative PERIOD]+
+typeDefinition  = typeDeclarative PERIOD [SPACE typeDeclarative PERIOD]*
+imperative      = LET noun EQUAL expression [AS A Type]
+                | LET noun BE expression [AS A Type]
+                | STORE expression [AS A Type] IN noun
+                | imperative WHILE expression
+                | WHILE expression, imperative
+                | IF expression, THEN imperative
+                | OTHERWISE, imperative
+                | imperativeList
+                | Verb using nounList
+                | GET DefinedNoun
+                | TAKE DefinedNoun
+imperativeList  = imperative AND THEN imperative
+                | imperative [, imperative]+, AND FINALLY imperative
+expression      = STRING
+                | INTEGER
+                | FLOAT
+                | TRUE
+                | FALSE
+                | NULL
+                | noun
+                | expr (IS|ISN'T|IS NOT) expr
+                | expr (IS|ISN'T|IS NOT) EQUAL TO expr
+                | expr (IS|ISN'T|IS NOT) GREATER THAN expr
+                | expr (IS|ISN'T|IS NOT) LESS THAN expr
+                | expr (IS|ISN'T|IS NOT) GREATER THAN OR EQUAL TO expr
+                | expr (IS|ISN'T|IS NOT) LESS THAN OR EQUAL TO expr
+                | expr = expr
+                | expr > expr
+                | expr < expr
+                | expr >= TO expr
+                | expr <= expr
+                | expr (IS|ISN'T|IS NOT) A Type
+                | expr (HAS|DOESN'T HAVE|DOES NOT HAVE) A ProperNoun
+                | expr PLUS expr
+                | expr MINUS expr
+                | expr TIMES expr
+                | expr MULTIPLIED BY expr
+                | expr OVER expr
+                | expr DIVIDED BY expr
+                | THE SUM OF expr AND expr
+                | THE DIFFERENCE BETWEEN expr AND expr
+                | THE PRODUCT OF expr AND expr
+                | THE QUOTIENT OF expr AND expr
+                | expr + expr
+                | expr - expr
+                | expr * expr
+                | expr / expr
+                | ( expr )
+                | expr [(, expr)+ ,] OR expr
+                | expr [(, expr)+ ,] AND expr
+                | NEGATIVE expr
+                | A NEW Type
+verbDeclarative = THIS IS HOW TO Verb (WITH|USING) formals 
+nounDeclarative = THIS IS HOW TO GET DefinedNoun (OF|WITH|USING) formals
+typeDeclarative = A Type IS A Type
+                | A Type IS A TYPE of Type
+                | A Type HAS attributes
+noun            = ProperNoun
+                | IT
+                | THAT
+                | THE RESULT
+                | noun's ProperNoun
+                | DefinedNoun OF nounList
+nounList        = noun
+                | noun AND noun
+                | noun [, noun]+, AND noun
+formals         = formal
+                | formal AND formal
+                | formal [, formal]+, AND formal
+formal          = A Type (NAMED|CALLED) ProperNoun
+attributes      = attribute
+                | attribute AND attribute
+                | attribute [, attribute]+, AND attribute
+attribute       = A Type (NAMED|CALLED) ProperNoun
+Verb            = contextual
+Type            = contextual
+ProperNoun      = contextual
+DefinedNoun     = contextual

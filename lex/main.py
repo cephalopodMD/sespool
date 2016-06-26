@@ -10,14 +10,23 @@ import ply.lex as lex
 # List of token names.   This is always required
 tokens = (
     'A',
-    'HAS',
-    'AND', 'OR', 'NOT'
+    'LET', 'EQUAL', 'BE', 'AS',
+    'STORE', 'IN',
+    'WHILE', 'IF', 'THEN', 'OTHERWISE',
+    'GET', 'TAKE',
+    'HAS', 'HAVE', 'DOES', "DOESN'T",
+    'IS', "ISN'T",
+    'AND', 'OR', 'NOT',
+    'FINALLY',
+    'CALLED,'
     'OWNERSHIP',
-    'NUMBER',
+    'INTEGER',
     'WORD',
     'COMMA',
     'PERIOD',
-    'INDENT'
+    'INDENT',
+    'SPACE',
+    'NEWLINE'
 )
 
 # Regular expression rules for simple tokens
@@ -26,25 +35,33 @@ t_HAS           = r'(H|h)as'
 t_AND           = r'(A|a)nd'
 t_OR            = r'(O|o)r'
 t_NOT           = r'(N|n)ot'
+t_CALLED        = r'(C|c)alled'
+t_DOTHEFOLLOWING= r'(D|d)o the following'
 t_OWNERSHIP     = r'\'s'
 t_WORD          = r'[a-z-]+'
 t_COMMA         = r'\,(\s|\n)'
 t_PERIOD        = r'\.(\s|\n)'
-t_INDENT        = r'\t'
+t_TAB           = r'\t'
+t_SPACE         = r'\s'
 
 # A regular expression rule with some action code
-def t_NUMBER(t):
+def t_INTEGER(t):
     r'\d+'
     t.value = int(t.value)    
     return t
 
+def t_FLOAT(t):
+    r'\d+\.\d'
+    t.value = float(t.value)
+    return t
+
 # Define a rule so we can track line numbers
-def t_newline(t):
+def t_NEWLINE(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
 # A string containing ignored characters (spaces and tabs)
-t_ignore  = ' '
+t_ignore  = ''
 
 # Error handling rule
 def t_error(t):
@@ -57,11 +74,11 @@ lexer = lex.lex()
 source = '''
     A point has a number x and a number y. 
     A vector has a point called point-a and a point called point-b.
-    To get a vector's length, do the following. Get the difference 
+    To get a vector's length, do the following. Get the difference
 between the vector's point-a's x and the vector's point-b's x
 and store it in x-difference. Get the difference between the vector's 
 point-a's y and the vector's point-b's y and store it in 
-y-difference. Finally, take the square root of the sum of x-difference and 
+y-difference. Finally, get the square root of the sum of x-difference and
 y-difference.
 '''
 
